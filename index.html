@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CFOP Trainer (F2L / OLL / PLL)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">CFOP</div>
+      <div>
+        <div class="title">CFOP Trainer</div>
+        <div class="subtitle">F2L • OLL • PLL — simple practice + timer</div>
+      </div>
+    </div>
+
+    <div class="topRight">
+      <nav class="tabs" role="tablist" aria-label="Sets">
+        <button class="tab active" data-set="F2L" role="tab" aria-selected="true">F2L (41)</button>
+        <button class="tab" data-set="OLL" role="tab" aria-selected="false">OLL (57)</button>
+        <button class="tab" data-set="PLL" role="tab" aria-selected="false">PLL (21)</button>
+      </nav>
+
+      <!-- NEW: Contrast mode -->
+      <label class="toggle" title="Helps black/white case recognition">
+        <input id="contrastToggle" type="checkbox" />
+        <span>Contrast</span>
+      </label>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- LEFT: PRACTICE -->
+    <section class="card practice">
+      <div class="row">
+        <div>
+          <h2 id="setTitle">F2L Practice</h2>
+          <p class="muted" id="setHint">
+            Match the picture to your cube. Use the timer while drilling.
+          </p>
+        </div>
+
+        <div class="actions">
+          <button class="btn" id="btnRandom">Next Random</button>
+          <button class="btn ghost" id="btnList">Show All</button>
+        </div>
+      </div>
+
+      <div class="practiceBox">
+        <div class="caseHead">
+          <div class="caseName" id="caseName">F2L-01</div>
+          <div class="caseMeta">
+            <a id="caseLink" href="#" target="_blank" rel="noreferrer">Open explanation ↗</a>
+          </div>
+        </div>
+
+        <div class="caseGrid">
+          <div class="imgWrap">
+            <img id="caseImg" alt="Case diagram" />
+          </div>
+
+          <div class="infoWrap">
+            <label class="label">Find a case</label>
+            <div class="searchRow">
+              <input id="searchInput" type="text" placeholder="Example: 12, OLL-27, pll t, Ua..." />
+              <button class="btn small" id="btnGo">Go</button>
+            </div>
+
+            <div class="hintBox">
+              <div class="label">Learning tip</div>
+              <div class="muted">
+                Don’t memorize all at once. Practice 3–5 cases per day. Use “Next Random” and time yourself.
+              </div>
+            </div>
+
+            <details class="details" id="detailsBox">
+              <summary>Show CubeQuest explanation inside the page</summary>
+              <div class="iframeWrap">
+                <iframe id="caseFrame" title="CubeQuest case page" loading="lazy"></iframe>
+              </div>
+              <div class="muted tiny">
+                If the site blocks embedding, click “Open explanation ↗”.
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+
+      <!-- LIST VIEW -->
+      <div class="listBox hidden" id="listBox">
+        <div class="row tight">
+          <div>
+            <h3>All cases</h3>
+            <p class="muted">Click a case to load it into practice mode.</p>
+          </div>
+          <button class="btn ghost" id="btnCloseList">Close</button>
+        </div>
+
+        <div class="grid" id="caseGrid"></div>
+      </div>
+    </section>
+
+    <!-- RIGHT: TIMER -->
+    <aside class="card timer">
+      <h2>Timer</h2>
+
+      <div class="timerDisplay" id="timerDisplay">0.00</div>
+
+      <div class="timerButtons">
+        <button class="btn big" id="btnStartStop">Start</button>
+        <button class="btn ghost big" id="btnReset">Reset</button>
+      </div>
+
+      <div class="timerMeta">
+        <div class="label">Current case</div>
+        <div class="pill" id="currentCasePill">F2L-01</div>
+      </div>
+
+      <div class="row tight">
+        <h3>History</h3>
+        <div class="actions">
+          <button class="btn ghost small" id="btnClear">Clear</button>
+        </div>
+      </div>
+
+      <div class="history" id="history"></div>
+
+      <div class="muted tiny">
+        Records are saved in your browser (localStorage).
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    Uses CubeQuest diagrams + links for learning.
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+
